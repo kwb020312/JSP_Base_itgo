@@ -4,7 +4,7 @@
 
 ![image](https://user-images.githubusercontent.com/46777310/220549874-6d1c9b5b-4402-48fa-b7af-77c280efea1c.png)
 
-### 😁알게된 
+### 😁알게된 점
 
 - 중급 Part1
     - JSP에서 말하는 `beans` 는 자바 기준에서의 클래스 이다.
