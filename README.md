@@ -1,5 +1,11 @@
 # Jsp
 
+[총 정리 PPT 보기](https://github.com/kwb020312/JSP_Base_itgo/files/10801005/2023_02_21_JSP._._.pptx)
+
+![image](https://user-images.githubusercontent.com/46777310/220549874-6d1c9b5b-4402-48fa-b7af-77c280efea1c.png)
+
+### 😁알게된 
+
 - 중급 Part1
     - JSP에서 말하는 `beans` 는 자바 기준에서의 클래스 이다.
     - `jsp:getProperty`, `jsp:setProperty` 는 자바의 `getter`, `setter`와 동일하다.
