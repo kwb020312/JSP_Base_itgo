@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>WebMarket</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 404에러가 발생을 하면 자동으로 exceptionNoPage.jsp페이지를 보여주게 한다. -->
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/exceptionNoPage.jsp</location>  
+  </error-page>
+  <!-- 시큐리티 역할 추가 -->
+  <security-role>
+  	<description>관리자</description>
+  	<role-name>admin</role-name>
+  </security-role>
+  <!-- 제약조건 추가 -->
+  <security-constraint>
+  	<display-name>WebMarket Security</display-name>
+  	<!-- 웹 자원 제약조건 설정 -->
+  	<web-resource-collection>
+  		<web-resource-name>WebMarket</web-resource-name>
+  		<description></description>
+  		<url-pattern>/addProduct.jsp</url-pattern>
+  		<url-pattern>/editProduct.jsp</url-pattern>
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<description>권한 관리자명</description>
+  		<role-name>admin</role-name>
+  	</auth-constraint>
+  </security-constraint>
+  <!-- 시큐리티 인증 설정부분 -->
+  <login-config>
+  	<!-- 폼 인증처리 방식 설정 -->
+  	<auth-method>FORM</auth-method>
+  	<form-login-config>
+  		<form-login-page>/login.jsp</form-login-page>
+  		<form-error-page>/login_failed.jsp</form-error-page>
+  	</form-login-config>
+  </login-config>
+  
+  <!-- 필터 적용 부분 -->
+  <filter>
+  	<filter-name>LogFilter</filter-name>
+  	<filter-class>filter.LogFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>LogFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 필터 적용(파일기록) 부분 -->
+  <!-- <filter>
+  	<filter-name>LogFileFilter</filter-name>
+  	<filter-class>filter.LogFileFilter</filter-class>
+  	<init-param>
+  		로그 기록을 남길 파일 경로 지정
+  		<param-name>filename</param-name>
+  		<param-value>D:\\develop\\Self\\JDBC_CRUD\\logs\\webmarket.log</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>LogFileFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping> -->
+  
+  <!-- 확장자가 *.do인 파일을 컨트롤러로 관리 -->
+  <servlet>
+  	<servlet-name>BoardController</servlet-name>
+  	<servlet-class>mvc.controller.BoardController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BoardController</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
